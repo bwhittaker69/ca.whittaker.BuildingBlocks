@@ -1,90 +1,86 @@
-﻿namespace ca.whittaker.blocks.Repositories;
-
-using ca.whittaker.blocks.Helpers;
-using Dapper;
-using ca.whittaker.blocks.Entities;
-
-public interface IBlockRepository
+﻿namespace ca.whittaker.blocks.Repositories
 {
-    Task<IEnumerable<Block>> GetAll();
-    Task<Block> GetById(int id);
-    //Task<Block> GetByEmail(string email);
-    Task Create(Block user);
-    Task Update(Block user);
-    Task Delete(int id);
-}
+    using ca.whittaker.blocks.Helpers;
+    using Dapper;
+    using ca.whittaker.blocks.Entities;
 
-public class BlockRepository : IBlockRepository
-{
-    private DataContext _context;
-
-    public BlockRepository(DataContext context)
+    public interface IBlockRepository
     {
-        _context = context;
+        Task<IEnumerable<Block>> GetAll();
+        Task<Block> GetById(int id);
+        Task Create(Block thisblock);
+        Task Update(Block thisblock);
+        Task Delete(int id);
     }
 
-    public async Task<IEnumerable<Block>> GetAll()
+    public class BlockRepository : IBlockRepository
     {
-        using var connection = _context.CreateConnection();
-        var sql = """
-            SELECT * FROM Blocks
-        """;
-        return await connection.QueryAsync<Block>(sql);
-    }
+        private DataContext _context;
 
-    public async Task<Block> GetById(int id)
-    {
-        using var connection = _context.CreateConnection();
-        var sql = """
-            SELECT * FROM Blocks 
-            WHERE Id = @id
-        """;
-        return await connection.QuerySingleOrDefaultAsync<Block>(sql, new { id });
-    }
+        public BlockRepository(DataContext context)
+        {
+            _context = context;
+        }
 
-    //public async Task<Block> GetByEmail(string email)
-    //{
-    //    using var connection = _context.CreateConnection();
-    //    var sql = """
-    //        SELECT * FROM Users 
-    //        WHERE Email = @email
-    //    """;
-    //    return await connection.QuerySingleOrDefaultAsync<Block>(sql, new { email });
-    //}
+        public async Task<IEnumerable<Block>> GetAll()
+        {
+            using var connection = _context.CreateConnection();
+            var sql = @"
+                SELECT * FROM buildingblocks.blocks
+            ";
+            return await connection.QueryAsync<Block>(sql);
+        }
 
-    public async Task Create(Block user)
-    {
-        using var connection = _context.CreateConnection();
-        var sql = """
-            INSERT INTO Blocks (Title, FirstName, LastName, Email, Role, PasswordHash)
-            VALUES (@Title, @FirstName, @LastName, @Email, @Role, @PasswordHash)
-        """;
-        await connection.ExecuteAsync(sql, user);
-    }
+        public async Task<Block> GetById(int id)
+        {
+            using var connection = _context.CreateConnection();
+            var sql = @"
+                SELECT * FROM buildingblocks.blocks 
+                WHERE id = @id
+            ";
+            return await connection.QuerySingleOrDefaultAsync<Block>(sql, new { id });
+        }
 
-    public async Task Update(Block user)
-    {
-        using var connection = _context.CreateConnection();
-        var sql = """
-            UPDATE Blocks 
-            SET Title = @Title,
-                FirstName = @FirstName,
-                LastName = @LastName, 
-                Email = @Email, 
-                Role = @Role, 
-                PasswordHash = @PasswordHash
-            WHERE Id = @Id
-        """;
-        await connection.ExecuteAsync(sql, user);
-    }
+        public async Task Create(Block thisblock)
+        {
+            using var connection = _context.CreateConnection();
+            var sql = @"
+                INSERT INTO buildingblocks.blocks (name, domain, description, icon, blocktypeid, backgroundcolor, bordercolor, fontcolor, border, margin, parentblockid, childblockid)
+                VALUES (@Name, @Domain, @Description, @Icon, @BlockTypeId, @BackgroundColor, @BorderColor, @FontColor, @Border, @Margin, @ParentBlockId, @ChildBlockId)
+            ";
+            await connection.ExecuteAsync(sql, thisblock);
+        }
 
-    public async Task Delete(int id)
-    {
-        using var connection = _context.CreateConnection();
-        var sql = """
-            DELETE FROM Blocks 
-            WHERE Id = @id
-        """;
-        await connection.ExecuteAsync(sql, new { id });
+        public async Task Update(Block thisblock)
+        {
+            using var connection = _context.CreateConnection();
+            var sql = @"
+                UPDATE buildingblocks.blocks 
+                SET name = @Name,
+                    domain = @Domain,
+                    description = @Description,
+                    icon = @Icon,
+                    blocktypeid = @BlockTypeId,
+                    backgroundcolor = @BackgroundColor,
+                    bordercolor = @BorderColor,
+                    fontcolor = @FontColor,
+                    border = @Border,
+                    margin = @Margin,
+                    parentblockid = @ParentBlockId,
+                    childblockid = @ChildBlockId
+                WHERE id = @Id
+            ";
+            await connection.ExecuteAsync(sql, thisblock);
+        }
+
+        public async Task Delete(int id)
+        {
+            using var connection = _context.CreateConnection();
+            var sql = @"
+                DELETE FROM buildingblocks.blocks 
+                WHERE id = @id
+            ";
+            await connection.ExecuteAsync(sql, new { id });
+        }
     }
 }

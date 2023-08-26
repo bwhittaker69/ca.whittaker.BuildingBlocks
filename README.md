@@ -41,3 +41,16 @@ This will set up the database structure required to work with the Architecture B
 
 > Note: Make sure to customize the database connection settings in the script if needed.
 
+### ca.whittaker.blocks Minimal API
+
+Blocks represent the individual architecture building blocks. Each block has attributes such as a name, domain, description, icon, associated block type, background color, border color, font color, border size, margin size, parent block ID, and child block ID. Blocks can be organized in a hierarchical structure using the parent-child relationship.
+
+To represent and manage blocks, the repository is organized as follows:
+
+- **Controllers**: Contains the BlocksController.cs file responsible for handling API requests related to blocks.
+
+- **Entities**: Contains the Block.cs file, which defines the structure of the Block entity.
+
+- **Repositories**: Contains the BlockRepository.cs file, responsible for database operations related to blocks.
+
+- **Services**: Contains the BlockService.cs file, which provides business logic and interacts with the repository.

@@ -18,35 +18,35 @@ public class BlocksController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var users = await _blockService.GetAll();
-        return Ok(users);
+        var blocks = await _blockService.GetAll();
+        return Ok(blocks);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
-        var user = await _blockService.GetById(id);
-        return Ok(user);
+        var block = await _blockService.GetById(id);
+        return Ok(block);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(CreateRequest model)
+    public async Task<IActionResult> Create(CreateRequest block)
     {
-        await _blockService.Create(model);
-        return Ok(new { message = "User created" });
+        await _blockService.Create(block);
+        return Ok(new { message = "block created" });
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, UpdateRequest model)
+    public async Task<IActionResult> Update(int id, UpdateRequest block)
     {
-        await _blockService.Update(id, model);
-        return Ok(new { message = "User updated" });
+        await _blockService.Update(id, block);
+        return Ok(new { message = "block updated" });
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
         await _blockService.Delete(id);
-        return Ok(new { message = "User deleted" });
+        return Ok(new { message = "block deleted" });
     }
 }
