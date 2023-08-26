@@ -1,56 +1,104 @@
-# Architecture Building Blocks Management
+# Architecture Building Blocks Management API
 
-This repository contains a data model and a minimal RESTful API for representing and managing Architecture Building Blocks. The data model includes definitions for both blocks and block types, and the associated REST API allows you to create, read, update, and delete these building blocks.
+This repository contains a RESTful API for managing Architecture Building Blocks. The API provides endpoints to represent and manage various types of building blocks and their relationships.
 
-## Project Structure
+## Table of Contents
 
-The project is structured into two main components:
+- [Introduction](#introduction)
+- [Setup](#setup)
+- [Endpoints](#endpoints)
+- [Models](#models)
+- [Services](#services)
+- [Controllers](#controllers)
+- [Repositories](#repositories)
+- [Helpers](#helpers)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-1. **ca.whittaker.BuildingBlocks**: This project contains the DTO (Data Transfer Object) model for the Architecture Building Blocks. It defines the structure of both blocks and block types.
+## Introduction
 
-2. **ca.whittaker.blocks**: This project contains the minimal RESTful API for managing the Architecture Building Blocks. It provides endpoints for interacting with the blocks and block types data.
+The Architecture Building Blocks Management API allows you to manage different types of building blocks such as Line of Business, Enterprise, Segment, Initiative, Architecture, Technology, and Solution. It provides endpoints to create, read, update, and delete these blocks, along with their types and relationships.
 
-## Data Model
+## Setup
 
-The data model consists of two main entities: `blocktypes` and `blocks`.
+1. Clone this repository to your local machine.
+2. Ensure you have a PostgreSQL database set up with the schema and tables as defined in the provided SQL schema script.
+3. Open the solution file and configure the `appsettings.json` with your database connection settings.
+4. Build and run the application.
 
-### Block Types (Table: buildingblocks.blocktypes)
+## Endpoints
 
-Block types represent the various categories or types that architecture building blocks can belong to. Each block type has attributes like a name, icon, background color, border color, font color, border size, and margin size.
+### Blocks
 
+- `GET /blocks` - Get all blocks.
+- `GET /blocks/{id}` - Get a block by ID.
+- `POST /blocks` - Create a new block.
+- `PUT /blocks/{id}` - Update an existing block.
+- `DELETE /blocks/{id}` - Delete a block.
 
-### Blocks (Table: buildingblocks.blocks)
+### Block Types
 
-Blocks represent the individual architecture building blocks. Each block has attributes such as a name, domain, description, icon, associated block type, background color, border color, font color, border size, margin size, parent block ID, and child block ID. Blocks can be organized in a hierarchical structure using the parent-child relationship.
+- `GET /blocktypes` - Get all block types.
+- `GET /blocktypes/{id}` - Get a block type by ID.
+- `POST /blocktypes` - Create a new block type.
+- `PUT /blocktypes/{id}` - Update an existing block type.
+- `DELETE /blocktypes/{id}` - Delete a block type.
 
-## Setting up the Database
+## Models
 
-The SQL script `schema.sql` in the repository contains the necessary SQL commands to create the required schema and tables for the data model. The script sets up the `buildingblocks` schema and creates the `blocktypes` and `blocks` tables with their respective attributes. It also defines foreign key constraints and checks for valid color codes.
+The API uses the following data models:
 
-To set up the database schema, follow these steps:
+- `Block` - Represents a building block with attributes like name, domain, description, etc.
+- `BlockType` - Represents a type of building block with attributes like name, icon, colors, etc.
+- `CreateRequest` - Data model for creating new blocks or block types.
+- `UpdateRequest` - Data model for updating existing blocks or block types.
 
-1. Copy the contents of the `schema.sql` script.
+## Services
 
-2. Open your PostgreSQL database management tool.
+The API services handle the business logic:
 
-3. Create a new query window and paste the copied script into the window.
+- `BlockService` - Provides methods to manage blocks.
+- `BlockTypeService` - Provides methods to manage block types.
 
-4. Execute the script to create the schema and tables.
+## Controllers
 
-This will set up the database structure required to work with the Architecture Building Blocks.
+Controllers handle incoming requests and interact with the services:
 
-> Note: Make sure to customize the database connection settings in the script if needed.
+- `BlocksController` - Handles endpoints related to blocks.
+- `BlockTypesController` - Handles endpoints related to block types.
 
-### ca.whittaker.blocks Minimal API
+## Repositories
 
-Blocks represent the individual architecture building blocks. Each block has attributes such as a name, domain, description, icon, associated block type, background color, border color, font color, border size, margin size, parent block ID, and child block ID. Blocks can be organized in a hierarchical structure using the parent-child relationship.
+Repositories provide data access to the database:
 
-To represent and manage blocks, the repository is organized as follows:
+- `BlockRepository` - Provides methods to interact with the Blocks table.
+- `BlockTypeRepository` - Provides methods to interact with the BlockTypes table.
 
-- **Controllers**: Contains the BlocksController.cs file responsible for handling API requests related to blocks.
+## Helpers
 
-- **Entities**: Contains the Block.cs file, which defines the structure of the Block entity.
+- `DataContext` - Represents the database context.
+- `AutoMapperProfile` - Configures AutoMapper mappings.
 
-- **Repositories**: Contains the BlockRepository.cs file, responsible for database operations related to blocks.
+## Configuration
 
-- **Services**: Contains the BlockService.cs file, which provides business logic and interacts with the repository.
+- Update the `appsettings.json` file with your database connection settings.
+
+## Usage
+
+1. Run the application.
+2. Access the API using the provided endpoints.
+3. Swagger documentation is available at `/swagger` for API reference.
+
+## Contributing
+
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or create a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+**Note:** This README is a template and should be customized to match your project's specific details and structure.
