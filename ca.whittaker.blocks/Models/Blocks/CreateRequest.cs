@@ -3,6 +3,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 using ca.whittaker.blocks.Entities;
+using ca.whittaker.buildingblocks.Models;
 
 public class CreateRequest
 {
@@ -10,7 +11,7 @@ public class CreateRequest
     public string? Name { get; set; }
 
     [Required]
-    [EnumDataType(typeof(ca.whittaker.BuildingBlocks.IBlock.BlockType))]
+    [EnumDataType(typeof(IBlock.BlockType))]
     public string? Type { get; set; }
 
 }

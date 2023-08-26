@@ -3,7 +3,7 @@
 using System.Data;
 using System.Text.Json.Serialization;
 
-public class Block : BuildingBlocks.Block
+public class Block : ca.whittaker.bulidingblocks.Models.Block
 {
 
 }

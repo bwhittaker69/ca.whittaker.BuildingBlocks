@@ -3,12 +3,13 @@
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 using ca.whittaker.blocks.Entities;
+using ca.whittaker.buildingblocks.Models;
 
 public class UpdateRequest
 {
     public string? Name { get; set; }
 
-    [EnumDataType(typeof(ca.whittaker.BuildingBlocks.IBlock.BlockType))]
+    [EnumDataType(typeof(IBlock.BlockType))]
     public string? Type { get; set; }
 
     //[EmailAddress]
