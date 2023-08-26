@@ -1,17 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ca.whittaker.blocks.Entities
+namespace ca.whittaker.blocks.Models.Blocks
 {
-    [Table("blocktypes", Schema = "buildingblocks")]
-    public class BlockType : ca.whittaker.buildingblocks.Models.BlockType
+    public class UpdateRequest
     {
-        public long Id { get; set; }
-
         [Required]
         public string Name { get; set; }
 
+        [Required]
+        public string Domain { get; set; }
+
+        [Required]
+        public string Description { get; set; }
+
         public byte[] Icon { get; set; }
+
+        [Required]
+        public long BlockTypeId { get; set; }
 
         [RegularExpression("^#[a-f0-9]{6}$", ErrorMessage = "Background color must be a valid hex color code.")]
         public string BackgroundColor { get; set; }
@@ -22,10 +27,12 @@ namespace ca.whittaker.blocks.Entities
         [RegularExpression("^#[a-f0-9]{6}$", ErrorMessage = "Font color must be a valid hex color code.")]
         public string FontColor { get; set; }
 
-        [Range(0, int.MaxValue, ErrorMessage = "Border value must be a non-negative integer.")]
         public int? Border { get; set; }
 
-        [Range(0, int.MaxValue, ErrorMessage = "Margin value must be a non-negative integer.")]
         public int? Margin { get; set; }
+
+        public long? ParentBlockId { get; set; }
+
+        public long? ChildBlockId { get; set; }
     }
 }

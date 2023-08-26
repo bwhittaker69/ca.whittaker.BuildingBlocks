@@ -14,22 +14,22 @@ namespace ca.whittaker.bulidingblocks.Models
 
         [Required]
         [Column("name")] // Map to "name" column in the database
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [Column("icon")] // Map to "icon" column in the database
-        public byte[] Icon { get; set; }
+        public byte[]? Icon { get; set; }
 
         [Column("backgroundcolor")] // Map to "backgroundcolor" column in the database
         [RegularExpression("^#[a-f0-9]{6}$")]
-        public string BackgroundColor { get; set; }
+        public string? BackgroundColor { get; set; }
 
         [Column("bordercolor")] // Map to "bordercolor" column in the database
         [RegularExpression("^#[a-f0-9]{6}$")]
-        public string BorderColor { get; set; }
+        public string? BorderColor { get; set; }
 
         [Column("fontcolor")] // Map to "fontcolor" column in the database
         [RegularExpression("^#[a-f0-9]{6}$")]
-        public string FontColor { get; set; }
+        public string? FontColor { get; set; }
 
         [Column("border")] // Map to "border" column in the database
         public int? Border { get; set; }
@@ -38,6 +38,6 @@ namespace ca.whittaker.bulidingblocks.Models
         public int? Margin { get; set; }
 
         [NotMapped]
-        public virtual ICollection<Block> Blocks { get; set; }
+        public virtual ICollection<Block>? Blocks { get; set; }
     }
 }

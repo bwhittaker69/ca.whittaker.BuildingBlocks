@@ -1,29 +1,27 @@
-﻿namespace ca.whittaker.blocks.Helpers
+﻿using AutoMapper;
+using ca.whittaker.blocks.Entities;
+using ca.whittaker.blocks.Models.Blocks;
+
+namespace ca.whittaker.blocks.Helpers
 {
-
-    using AutoMapper;
-    using ca.whittaker.blocks.Entities;
-    using ca.whittaker.blocks.Models.Blocks;
-    using static System.Runtime.InteropServices.JavaScript.JSType;
-
     public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
         {
-            // CreateRequest -> User
+            // CreateRequest -> Block
             CreateMap<CreateRequest, Block>();
 
-            // UpdateRequest -> User
+            // UpdateRequest -> Block
             CreateMap<UpdateRequest, Block>()
                 .ForAllMembers(x => x.Condition(
-                    (src, dest, prop) =>
+                    (src, dest, prop, context) =>
                     {
-                        // ignore both null & empty string properties
+                        // Ignore both null and empty string properties
                         if (prop == null) return false;
                         if (prop.GetType() == typeof(string) && string.IsNullOrEmpty((string)prop)) return false;
 
-                        // ignore null role
-                        if (x.DestinationMember.Name == "Type" && src.Type == null) return false;
+                        // Ignore null BlockTypeId
+                        if (x.DestinationMember.Name == "BlockTypeId" && src.BlockTypeId == null) return false;
 
                         return true;
                     }
