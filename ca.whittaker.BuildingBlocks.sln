@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ca.whittaker.buildingblocks", "ca.whittaker.BuildingBlocks\ca.whittaker.buildingblocks.csproj", "{074B6F9A-534B-4657-8E68-21F58D367254}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ca.whittaker.blocks", "ca.whittaker.blocks\ca.whittaker.blocks.csproj", "{F4E4495C-728F-4338-9024-74D016552E71}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0D0F1B76-8F9F-405B-98B7-3D1E1C1ACA17}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{074B6F9A-534B-4657-8E68-21F58D367254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{074B6F9A-534B-4657-8E68-21F58D367254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{074B6F9A-534B-4657-8E68-21F58D367254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{074B6F9A-534B-4657-8E68-21F58D367254}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4E4495C-728F-4338-9024-74D016552E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4E4495C-728F-4338-9024-74D016552E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4E4495C-728F-4338-9024-74D016552E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4E4495C-728F-4338-9024-74D016552E71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2888BEA9-BFEA-4808-99BA-1D43BAA9A3A2}
+	EndGlobalSection
+EndGlobal
