@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ca.whittaker.BuildingBlocks\ca.whittaker.buildingblocks.csproj" />
+    <ProjectReference Include="..\ca.whittaker.buildingblocks\ca.whittaker.buildingblocks.csproj" />
   </ItemGroup>
 
 </Project>

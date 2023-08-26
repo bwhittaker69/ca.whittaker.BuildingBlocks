@@ -2,21 +2,21 @@
 
 namespace ca.whittaker.blocks.Models.BlockTypes
 {
-    public class UpdateRequest
+    public class CreateBlockTypeRequest
     {
         [Required]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
-        public byte[] Icon { get; set; }
+        public byte[]? Icon { get; set; }
 
         [RegularExpression("^#[a-f0-9]{6}$", ErrorMessage = "Background color must be a valid hex color code.")]
-        public string BackgroundColor { get; set; }
+        public string? BackgroundColor { get; set; }
 
         [RegularExpression("^#[a-f0-9]{6}$", ErrorMessage = "Border color must be a valid hex color code.")]
-        public string BorderColor { get; set; }
+        public string? BorderColor { get; set; }
 
         [RegularExpression("^#[a-f0-9]{6}$", ErrorMessage = "Font color must be a valid hex color code.")]
-        public string FontColor { get; set; }
+        public string? FontColor { get; set; }
 
         public int? Border { get; set; }
 

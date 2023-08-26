@@ -6,7 +6,7 @@ using ca.whittaker.blocks.Services;
 
 [ApiController]
 [Route("[controller]")]
-public class BlocksController : ControllerBase
+public partial class BlocksController : ControllerBase
 {
     private IBlockService _blockService;
 
@@ -30,14 +30,14 @@ public class BlocksController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(CreateRequest block)
+    public async Task<IActionResult> Create(CreateBlockRequest block)
     {
         await _blockService.Create(block);
         return Ok(new { message = "block created" });
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, UpdateRequest block)
+    public async Task<IActionResult> Update(int id, UpdateBlockRequest block)
     {
         await _blockService.Update(id, block);
         return Ok(new { message = "block updated" });

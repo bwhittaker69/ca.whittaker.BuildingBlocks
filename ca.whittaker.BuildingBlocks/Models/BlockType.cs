@@ -1,9 +1,8 @@
-﻿using ca.whittaker.buildingblocks.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ca.whittaker.bulidingblocks.Models
+namespace ca.whittaker.buildingblocks.Models
 {
     [Table("blocktypes", Schema = "buildingblocks")]
     public class BlockType : IEntity

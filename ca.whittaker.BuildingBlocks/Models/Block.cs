@@ -1,8 +1,7 @@
-﻿using ca.whittaker.buildingblocks.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ca.whittaker.bulidingblocks.Models
+namespace ca.whittaker.buildingblocks.Models
 {
     [Table("blocks", Schema = "buildingblocks")]
     public class Block : IEntity

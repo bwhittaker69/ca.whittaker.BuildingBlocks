@@ -2,30 +2,28 @@
 
 namespace ca.whittaker.blocks.Models.Blocks
 {
-    public class CreateRequest
+    public class UpdateBlockRequest
     {
         [Required]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [Required]
-        public string Domain { get; set; }
+        public required string Domain { get; set; }
 
-        [Required]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public byte[] Icon { get; set; }
+        public byte[]? Icon { get; set; }
 
-        [Required]
-        public long BlockTypeId { get; set; }
+        public long? BlockTypeId { get; set; }
 
         [RegularExpression("^#[a-f0-9]{6}$", ErrorMessage = "Background color must be a valid hex color code.")]
-        public string BackgroundColor { get; set; }
+        public string? BackgroundColor { get; set; }
 
         [RegularExpression("^#[a-f0-9]{6}$", ErrorMessage = "Border color must be a valid hex color code.")]
-        public string BorderColor { get; set; }
+        public string? BorderColor { get; set; }
 
         [RegularExpression("^#[a-f0-9]{6}$", ErrorMessage = "Font color must be a valid hex color code.")]
-        public string FontColor { get; set; }
+        public string? FontColor { get; set; }
 
         public int? Border { get; set; }
 

@@ -10,8 +10,8 @@
     {
         Task<IEnumerable<Block>> GetAll();
         Task<Block> GetById(int id);
-        Task Create(CreateRequest block);
-        Task Update(int id, UpdateRequest updatedBlock);
+        Task Create(CreateBlockRequest block);
+        Task Update(int id, UpdateBlockRequest updatedBlock);
         Task Delete(int id);
     }
 
@@ -43,7 +43,7 @@
             return block;
         }
 
-        public async Task Create(CreateRequest block)
+        public async Task Create(CreateBlockRequest block)
         {
             // Map the request data to the Block entity
             var newBlock = _mapper.Map<Block>(block);
@@ -52,7 +52,7 @@
             await _blockRepository.Create(newBlock);
         }
 
-        public async Task Update(int id, UpdateRequest updatedBlock)
+        public async Task Update(int id, UpdateBlockRequest updatedBlock)
         {
             var existingBlock = await _blockRepository.GetById(id);
 

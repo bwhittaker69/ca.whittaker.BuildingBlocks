@@ -44,7 +44,7 @@ public class DataContext
     {
         // create tables if they don't exist
         using var connection = CreateConnection();
-        await _initSQL();
+        //await _initSQL();
 
         async Task _initSQL()
         {
@@ -93,7 +93,7 @@ public class DataContext
                     id BIGSERIAL NOT NULL,
                     name VARCHAR(256) COLLATE pg_catalog."default" NOT NULL,
                     domain VARCHAR(256) COLLATE pg_catalog."default" NOT NULL,
-                    description TEXT COLLATE pg_catalog."default" NOT NULL,
+                    description TEXT COLLATE pg_catalog."default" null,
                     icon bytea null,
                     blocktypeid BIGINT null,
                     backgroundcolor VARCHAR(7) null,

@@ -2,8 +2,11 @@ using ca.whittaker.blocks.Helpers;
 using System.Text.Json.Serialization;
 using ca.whittaker.blocks.Repositories;
 using ca.whittaker.blocks.Services;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.AddConsole(); // Add console logging
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -34,6 +37,8 @@ var builder = WebApplication.CreateBuilder(args);
     services.AddSingleton<DataContext>();
     services.AddScoped<IBlockRepository, BlockRepository>();
     services.AddScoped<IBlockService, BlockService>();
+    services.AddScoped<IBlockTypeRepository, BlockTypeRepository>();
+    services.AddScoped<IBlockTypeService, BlockTypeService>();
 }
 
 var app = builder.Build();
