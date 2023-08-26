@@ -9,6 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ca.whittaker.blocks", "ca.w
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0D0F1B76-8F9F-405B-98B7-3D1E1C1ACA17}"
 	ProjectSection(SolutionItems) = preProject
+		createdatabase.sql = createdatabase.sql
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
 	EndProjectSection
